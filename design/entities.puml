@@ -1,0 +1,16 @@
+@startuml
+
+package "User collections" #DDDDDD {
+  User <|-- Teller
+  User <|-- CorporateUser
+  User <|-- ParticularUser
+}
+
+
+package "Account collections" {
+  Class Account
+  Class Transaction
+
+  Account - Transaction
+}
+@enduml

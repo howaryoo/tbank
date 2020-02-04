@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor user
+cloud auth_api
+
+rectangle online_bank {
+frame app
+cloud banking_api
+database database
+
+  user == app
+  app == banking_api : check-balance
+  app == banking_api : transfer
+  banking_api == database
+  banking_api == auth_api
+}
+@enduml
+
+
+actor actor
+agent agent
+artifact artifact
+boundary boundary
+card card
+cloud cloud
+component component
+control control
+database database
+entity entity
+file file
+folder folder
+frame frame
+interface  interface
+node node
+package package
+queue queue
+stack stack
+rectangle rectangle
+storage storage
+usecase usecase

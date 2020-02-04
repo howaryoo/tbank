@@ -1,0 +1,48 @@
+@startuml
+left to right direction
+title Teller context diagram
+skinparam packageStyle rectangle
+actor user
+actor teller
+cloud auth_api
+node safe
+
+user == teller : $
+teller == safe : $
+
+rectangle online_bank {
+frame app
+cloud banking_api
+database database
+
+  teller == app
+  app <==> banking_api : check-balance
+  app ==> banking_api : deposit
+  app ==> banking_api : set-settings
+  banking_api == database
+  banking_api == auth_api
+}
+@enduml
+
+
+actor actor
+agent agent
+artifact artifact
+boundary boundary
+card card
+cloud cloud
+component component
+control control
+database database
+entity entity
+file file
+folder folder
+frame frame
+interface  interface
+node node
+package package
+queue queue
+stack stack
+rectangle rectangle
+storage storage
+usecase usecase
