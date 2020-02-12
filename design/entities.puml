@@ -3,14 +3,31 @@
 package "User collections" #DDDDDD {
   User <|-- Teller
   User <|-- CorporateUser
-  User <|-- ParticularUser
+  User <|-- PrivateUser
 }
 
 
 package "Account collections" {
-  Class Account
-  Class Transaction
+  Class Account {
+    - branch_id
+    - account_id
+  }
+  Class Transaction {
+    - timestamp
+    - account_id
+    - amount
+    - balance
+  }
 
-  Account - Transaction
+  Account "1"--"*" Transaction
 }
+
+package "General collections" {
+  Class Settings 
+}
+
+package "Audit" {
+  Class AuditLog
+}
+
 @enduml

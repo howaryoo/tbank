@@ -1,0 +1,31 @@
+@startuml
+
+actor "User/Browser" as u
+participant "App" as app
+box "Banking API" 
+participant "Auth service" as auth
+participant "Validator service" as val
+participant "Transfer service" as trsf
+end box
+participant "Authorities" as gov
+database "DB" as DB
+participant "Notification service" as notif
+
+
+u-> app: Login
+app -> auth: 
+auth -> app: Token
+
+u -> app: transfer (amount)
+app -> val: validate (transfer inst)
+activate val
+val -> gov: report
+val -> DB: insert transaction
+val -> trsf: response
+alt "notification required"
+deactivate val
+trsf -> notif: notify
+end
+notif -> u: Push (SMS,...)
+
+@enduml

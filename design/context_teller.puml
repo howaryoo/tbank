@@ -5,6 +5,7 @@ skinparam packageStyle rectangle
 actor user
 actor teller
 cloud auth_api
+cloud authorities
 node safe
 
 user == teller : $
@@ -21,6 +22,7 @@ database database
   app ==> banking_api : set-settings
   banking_api == database
   banking_api == auth_api
+  banking_api == authorities
 }
 @enduml
 

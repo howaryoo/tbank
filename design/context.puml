@@ -3,6 +3,7 @@ left to right direction
 skinparam packageStyle rectangle
 actor user
 cloud auth_api
+cloud authorities
 
 rectangle online_bank {
 frame app
@@ -14,6 +15,7 @@ database database
   app == banking_api : transfer
   banking_api == database
   banking_api == auth_api
+  banking_api == authorities
 }
 @enduml
 
